@@ -17,7 +17,7 @@ public class SavingsAccount extends BankAccount{
         // 2. "Insufficient Balance" : If the amount exceeds balance
         if(amount>maxWithdrawalLimit)
         {
-            throw new LimitExceed("Maximum Withdraw Limit Exceed");
+            throw new LimitExceed("Maximum Withdraw Limit Exceeded");
         }
         else
         {
