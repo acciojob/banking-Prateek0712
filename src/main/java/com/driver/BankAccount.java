@@ -20,24 +20,59 @@ public class BankAccount {
             throw new AcNumberException("Account Number can not be generated");
         }
 
-        StringBuilder sb = new StringBuilder();
-        int cnt = 0;
-
-        for(int i=9; i>=0; i--){
-            while(i <= sum){
-                cnt++;
-                sb.append(i);
-                sum -= i;
+        String AcNo="";
+        for(int i=0;i<digits;i++)
+        {
+            if(sum>=9)
+            {
+                sum-=9;
+                AcNo+="9";
             }
-            if(sum == 0) break;
+            else if(sum>=8)
+            {
+               sum-=8;
+               AcNo+="8";
+            }
+            else if(sum>=7)
+            {
+                sum-=7;
+                AcNo+="7";
+            }
+            else if(sum>=6)
+            {
+                sum-=6;
+                AcNo+="6";
+            }
+            else if (sum>=5)
+            {
+                sum-=5;
+                AcNo+="5";
+            }
+            else if(sum>=4)
+            {
+                sum-=4;
+                AcNo+="4";
+            }
+            else if(sum>=3)
+            {
+                sum-=-3;
+                AcNo+="3";
+            }
+            else if(sum>=2)
+            {
+                sum-=2;
+                AcNo+="2";
+            }
+            else if(sum>=1)
+            {
+                sum-=1;
+                AcNo+="1";
+            }
+            else {
+                AcNo+="0";
+            }
         }
-
-        while(cnt < digits){
-            sb.append(0);
-            cnt++;
-        }
-
-        return sb.toString();
+        return AcNo;
     }
 
     public void deposit(double amount) {
