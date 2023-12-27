@@ -17,61 +17,20 @@ public class BankAccount {
         //Generate account number having given number of 'digits' such that the sum of digits is equal to 'sum'
         //If it is not possible, throw "Account Number can not be generated" exception
         String AcNo="";
-        if(9*digits<=sum)
+        if(9*digits>=sum)
         {
-            for(int i=0;i<digits;i++)
+            for(int i=9;i>=1;i--)
             {
-                if(sum>0)
+                while(i<=sum)
                 {
-                    if(sum>=9)
-                    {
-                        AcNo+="9";
-                        sum-=9;
-                    }
-                    else if(sum>=8)
-                    {
-                        AcNo+="8";
-                        sum-=8;
-                    }
-                    else if(sum>=7)
-                    {
-                        AcNo+="7";
-                        sum-=7;
-                    }
-                    else if(sum>=6)
-                    {
-                        AcNo+="6";
-                        sum-=6;
-                    }
-                    else if(sum>=5)
-                    {
-                        AcNo+="5";
-                        sum-=5;
-                    }
-                    else if(sum>=4)
-                    {
-                        AcNo+="4";
-                        sum-=4;
-                    }
-                    else if(sum>=3)
-                    {
-                        AcNo+="3";
-                        sum-=3;
-                    } else if (sum>=2)
-                    {
-                        AcNo+="2";
-                        sum-=2;
-                    }
-                    else if(sum>=1)
-                    {
-                        AcNo+="1";
-                        sum-=1;
-                    }
+                    AcNo+=i;
+                    sum-=i;
                 }
-                else
-                {
-                    AcNo+="0";
-                }
+                if(sum==0) break;
+            }
+            while(AcNo.length()<digits)
+            {
+                AcNo+=0;
             }
         }
         else
