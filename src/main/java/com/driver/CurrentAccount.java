@@ -33,7 +33,7 @@ public class CurrentAccount extends BankAccount{
         if(!isValid(this.tradeLicenseId))
         {
             String ans=orgString(this.tradeLicenseId);
-            if(ans==null)
+            if(ans.length()==0)
             {
                 throw new LicenseInvalid("Valid License can not be generated");
             }
@@ -45,7 +45,7 @@ public class CurrentAccount extends BankAccount{
     }
 
     private boolean isValid(String s) {
-        for(int i=1;i<tradeLicenseId.length();i++)
+        for(int i=1;i<s.length();i++)
         {
             if(s.charAt(i-1)==s.charAt(i))
             {
@@ -65,8 +65,10 @@ public class CurrentAccount extends BankAccount{
     }
     private String orgString(String s) {
         HashMap<Character,Integer>map=new HashMap<>();
-        PriorityQueue<pair>pq=new PriorityQueue<>((a,b)->b.freq-a.freq);
-        StringBuilder sb=new StringBuilder("");
+        PriorityQueue<pair>pq=new PriorityQueue<>((a,b)->{
+            return a.freq>b.freq ? -1 : 1;
+        });
+        StringBuilder sb=new StringBuilder();
         for(char ch:s.toCharArray())
         {
             map.put(ch,map.getOrDefault(ch,0)+1);
@@ -91,7 +93,7 @@ public class CurrentAccount extends BankAccount{
         }
         if(sb.length()!=s.length())
         {
-            return null;
+            return "";
         }
         return sb.toString();
 }}
