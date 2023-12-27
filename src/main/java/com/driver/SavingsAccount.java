@@ -39,7 +39,7 @@ public class SavingsAccount extends BankAccount{
         int n = times;
         int t = years;
         double A = P * (Math.pow((1 + (r/n)), (n*t)));
-        return A+P;
+        return A;
 
     }
 
