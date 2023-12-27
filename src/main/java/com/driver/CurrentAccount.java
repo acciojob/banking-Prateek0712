@@ -44,10 +44,10 @@ public class CurrentAccount extends BankAccount{
         }
     }
 
-    private boolean isValid(String tradeLicenseId) {
+    private boolean isValid(String s) {
         for(int i=1;i<tradeLicenseId.length();i++)
         {
-            if(tradeLicenseId.charAt(i-1)==tradeLicenseId.charAt(i))
+            if(s.charAt(i-1)==s.charAt(i))
             {
                 return false;
             }
@@ -63,11 +63,11 @@ public class CurrentAccount extends BankAccount{
             this.freq=freq;
         }
     }
-    private String orgString(String tradeLicenseId) {
+    private String orgString(String s) {
         HashMap<Character,Integer>map=new HashMap<>();
         PriorityQueue<pair>pq=new PriorityQueue<>((a,b)->b.freq-a.freq);
         StringBuilder sb=new StringBuilder("");
-        for(char ch:tradeLicenseId.toCharArray())
+        for(char ch:s.toCharArray())
         {
             map.put(ch,map.getOrDefault(ch,0)+1);
         }
@@ -89,7 +89,7 @@ public class CurrentAccount extends BankAccount{
             }
             prev=curr;
         }
-        if(sb.length()!=tradeLicenseId.length())
+        if(sb.length()!=s.length())
         {
             return null;
         }

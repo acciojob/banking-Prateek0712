@@ -26,37 +26,46 @@ public class BankAccount {
                     if(sum>=9)
                     {
                         AcNo+="9";
+                        sum-=9;
                     }
                     else if(sum>=8)
                     {
                         AcNo+="8";
+                        sum-=8;
                     }
                     else if(sum>=7)
                     {
                         AcNo+="7";
+                        sum-=7;
                     }
                     else if(sum>=6)
                     {
                         AcNo+="6";
+                        sum-=6;
                     }
                     else if(sum>=5)
                     {
                         AcNo+="5";
+                        sum-=5;
                     }
                     else if(sum>=4)
                     {
                         AcNo+="4";
+                        sum-=4;
                     }
                     else if(sum>=3)
                     {
                         AcNo+="3";
+                        sum-=3;
                     } else if (sum>=2)
                     {
                         AcNo+="2";
+                        sum-=2;
                     }
                     else if(sum>=1)
                     {
                         AcNo+="1";
+                        sum-=1;
                     }
                 }
                 else
@@ -74,17 +83,17 @@ public class BankAccount {
 
     public void deposit(double amount) {
         //add amount to balance
-        balance+=amount;
+        this.balance+=amount;
     }
 
     public void withdraw(double amount) throws Exception {
         // Remember to throw "Insufficient Balance" exception, if the remaining amount would be less than minimum balance
-        if(balance-amount<minBalance)
+        if(this.balance-amount<minBalance)
         {
             throw new InSufficientBalanceException("Insufficient Balance");
         }
         else {
-            balance-=amount;
+            this.balance-=amount;
         }
     }
 
